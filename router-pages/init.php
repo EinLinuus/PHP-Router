@@ -19,6 +19,11 @@ $router = new Router();
  */
 require_once __DIR__ . '/page-home.php';
 
+/**
+ * Page "/profile/"
+ */
+require_once __DIR__ . '/page-profile.php';
+
 
 /* --- Register pages above --- */
 
