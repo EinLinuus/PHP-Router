@@ -1,0 +1,16 @@
+# Default .htaccess file from PHP Router
+# https://github.com/EinLinuus/PHP-Router/
+#
+# Replace "/router/php-router/" with the file path
+#
+# If your domain is "mywebsite.com"
+# Replace it with "/"
+#
+# If your domain is "mywebsite.com/website"
+# Replace it with "/website/"
+
+RewriteEngine On
+RewriteBase /router/php-router/
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php/$1 [L]
