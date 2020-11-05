@@ -7,6 +7,8 @@ Simple but powerful PHP Router
 1. [Specific Methods](#specific-methods)
 1. [CatchAll Routes](#catchall-routes)
 1. [Directories](#directories)
+1. [How to update](#how-to-update)
+1. [Versions](#versions)
 
 # Requirements
 * PHP 5 (7 is recommended)
@@ -148,4 +150,17 @@ In your page function, you find the requested url in the `$data` Array:
 |/router-includes|`Deny from all` Router Core|
 |/router-pages|`Deny from all` PHP Page-Files|xw
 
+# How to update
+If you're upgrading to a newer Version, just download the new files and replace the `/router-includes/` folder
+and the `/index.php`.
+
+> Make sure the write no code into the core files!<br>
+> Your code should be located in `/router-assets/` and `/router-pages/` or custom created folders.
+
+If any version needs special actions while updating, you'll see it below unter [Versions](#versions).
+
 # Versions
+
+---
+### Stable Release 1.0
+Every project has a start, here started this project :)
