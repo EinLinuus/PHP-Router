@@ -7,6 +7,7 @@ Simple but powerful PHP Router
 1. [Specific Methods](#specific-methods)
 1. [CatchAll Routes](#catchall-routes)
 1. [Directories](#directories)
+1. [Support](#support)
 1. [How to update](#how-to-update)
 1. [Versions](#versions)
 
@@ -149,6 +150,17 @@ In your page function, you find the requested url in the `$data` Array:
 |/router-assets|`Allowed` Public folder for CSS, HTML, JavaScript|
 |/router-includes|`Deny from all` Router Core|
 |/router-pages|`Deny from all` PHP Page-Files|xw
+
+# Support
+
+The Router isn't working? You have Problems or questions regarding the router / my code?
+
+Get in touch with me:
+* E-Mail: [support[at]seperax.com](support@seperax.com)
+* Twitter: [@EinLinuus](https://twitter.com/EinLinuus)
+
+Or report an issue here:
+https://github.com/EinLinuus/PHP-Router/issues
 
 # How to update
 If you're upgrading to a newer Version, just download the new files and replace the `/router-includes/` folder
