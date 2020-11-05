@@ -4,6 +4,7 @@ Simple but powerful PHP Router
 1. [Requirements](#requirements)
 1. [Installation](#installation)
 1. [Usage](#usage)
+1. [Specific Methods](#specific-methods)
 1. [CatchAll Routes](#catchall-routes)
 1. [Directories](#directories)
 
@@ -68,6 +69,38 @@ function page_mypage( $route, $data ){
 
     HTML;
 
+}
+```
+
+# Specific Methods
+Example: You have a login screen with a simple form. Now you can have one function for the form and one for the backend stuff to collect the data and do whatever you want.
+
+If you create a route, you can specify the accepted methods:
+
+|Route method|Request method|
+|-|-|
+|`POST`|Post-Request|
+|`GET`|Get-Request|
+|`*`|Post- and Get-Request|
+
+Just use `setMethod( /* Method */ )` when you create your route.
+
+> By default the accepted methods are set to `*`
+
+Example:
+```php
+$router->registerRoute(
+    (new Route('/login/'))->setMethod('GET')->setHandler('page_login_get')
+);
+$router->registerRoute(
+    (new Route('/login/'))->setMethod('POST')->setHandler('page_login_post')
+);
+
+function page_login_get( $route, $data ) {
+    echo "This is a get request!";
+}
+function page_login_post( $route, $data ) {
+    echo "This is a post request!";
 }
 ```
 

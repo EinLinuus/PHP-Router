@@ -24,6 +24,11 @@ require_once __DIR__ . '/page-home.php';
  */
 require_once __DIR__ . '/page-profile.php';
 
+/**
+ * Page "/login/"
+ */
+require_once __DIR__ . '/page-login.php';
+
 
 /* --- Register pages above --- */
 

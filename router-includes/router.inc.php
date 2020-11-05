@@ -53,34 +53,41 @@ class Router {
         $nearestRoute = null;
         $nearestCount = 0;
 
+        $requestMethod = strtolower($_SERVER['REQUEST_METHOD']);
+
         foreach($this->getRoutes() as $route){
 
             $routeURL = $route->getRoute();
             $routeCatchAll = $route->getCatchAll();
+            $routeMethod = strtolower($route->getMethod());
 
-            $charCount = getSameCharAmount($routeURL, $url);
+            if($routeMethod === "*" || $routeMethod === $requestMethod){
 
-            if($charCount === strlen($routeURL)){
-                if($charCount < strlen($url)){
-                    // Route is parent
-                    if($routeCatchAll){
-                        if($nearestCount <= $charCount){
-                            // Replace because its more specific
-                            $nearestCount = $charCount;
-                            $nearestRoute = $route;
-                        }else {
-                            // Other is more specific
+                $charCount = getSameCharAmount($routeURL, $url);
+
+                if($charCount === strlen($routeURL)){
+                    if($charCount < strlen($url)){
+                        // Route is parent
+                        if($routeCatchAll){
+                            if($nearestCount <= $charCount){
+                                // Replace because its more specific
+                                $nearestCount = $charCount;
+                                $nearestRoute = $route;
+                            }else {
+                                // Other is more specific
+                            }
+                        }else { 
+                            // Invalid because route is no catchall
                         }
-                    }else { 
-                        // Invalid because route is no catchall
+                    }else {
+                        // Exact page request
+                        $nearestRoute = $route;
+                        $nearestCount = $charCount;
                     }
                 }else {
-                    // Exact page request
-                    $nearestRoute = $route;
-                    $nearestCount = $charCount;
+                    // Other page
                 }
-            }else {
-                // Other page
+
             }
 
         }
