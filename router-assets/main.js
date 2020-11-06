@@ -1,3 +1,14 @@
+$('#loadAjax').hover((action) => {
+    $('#loadAjax').text('Click me!');
+}, (action) => {
+    $('#loadAjax').text('Load');
+});
+
+$('.testbtn').click((event) => {
+    // // $('.testbox').fadeToggle();
+    $('.testbox').slideUp(2000);
+});
+
 $('#loadAjax').click((event) => {
 
     $('#loadAjax').remove();

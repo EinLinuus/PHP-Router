@@ -35,7 +35,7 @@ function page_ajaxdemo( $route, $data ){
         </body>
     </html>
 
-    <script src="$baseurl/router-assets/pro.js"></script>
+    <script src="$baseurl/router-assets/pro.min.js"></script>
     <script src="$baseurl/router-assets/main.js"></script>
 
     HTML;
