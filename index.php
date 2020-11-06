@@ -5,7 +5,7 @@
  * Simple but powerful PHP Router
  * 
  * @author Linus Benkner
- * @version 1.0
+ * @version 1.4
  */
 
 /**

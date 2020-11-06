@@ -29,6 +29,16 @@ require_once __DIR__ . '/page-profile.php';
  */
 require_once __DIR__ . '/page-login.php';
 
+/**
+ * Page "/ajax/"
+ */
+require_once __DIR__ . '/page-ajax.php';
+
+/**
+ * Page "/ajax/demo/"
+ */
+require_once __DIR__ . '/page-ajax-demo.php';
+
 
 /* --- Register pages above --- */
 

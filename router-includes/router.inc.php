@@ -55,37 +55,53 @@ class Router {
 
         $requestMethod = strtolower($_SERVER['REQUEST_METHOD']);
 
+        $requestIsAJAX = false;
+        $ajaxData = $_POST;
+
+        if(isset($ajaxData['ajax']) && $ajaxData['ajax'] == true) $requestIsAJAX = true;
+
         foreach($this->getRoutes() as $route){
 
             $routeURL = $route->getRoute();
             $routeCatchAll = $route->getCatchAll();
+            $routeIsAJAX = $route->getAJAX();
             $routeMethod = strtolower($route->getMethod());
 
-            if($routeMethod === "*" || $routeMethod === $requestMethod){
+            /**
+             * Check if route is combatible
+             */
+            if(($routeIsAJAX && $requestIsAJAX) || (!$routeIsAJAX && !$requestIsAJAX)){
 
-                $charCount = getSameCharAmount($routeURL, $url);
+                /**
+                 * Check if method is allowed
+                 */
+                if($routeMethod === "*" || $routeMethod === $requestMethod){
 
-                if($charCount === strlen($routeURL)){
-                    if($charCount < strlen($url)){
-                        // Route is parent
-                        if($routeCatchAll){
-                            if($nearestCount <= $charCount){
-                                // Replace because its more specific
-                                $nearestCount = $charCount;
-                                $nearestRoute = $route;
-                            }else {
-                                // Other is more specific
+                    $charCount = getSameCharAmount($routeURL, $url);
+    
+                    if($charCount === strlen($routeURL)){
+                        if($charCount < strlen($url)){
+                            // Route is parent
+                            if($routeCatchAll){
+                                if($nearestCount <= $charCount){
+                                    // Replace because its more specific
+                                    $nearestCount = $charCount;
+                                    $nearestRoute = $route;
+                                }else {
+                                    // Other is more specific
+                                }
+                            }else { 
+                                // Invalid because route is no catchall
                             }
-                        }else { 
-                            // Invalid because route is no catchall
+                        }else {
+                            // Exact page request
+                            $nearestRoute = $route;
+                            $nearestCount = $charCount;
                         }
                     }else {
-                        // Exact page request
-                        $nearestRoute = $route;
-                        $nearestCount = $charCount;
+                        // Other page
                     }
-                }else {
-                    // Other page
+    
                 }
 
             }

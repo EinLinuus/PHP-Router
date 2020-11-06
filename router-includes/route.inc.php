@@ -30,6 +30,11 @@ class Route {
     private $method = "*";
 
     /**
+     * Is AJAX handler
+     */
+    private $isAjax = false;
+
+    /**
      * Route class constructor
      */
     function __construct(string $route) {
@@ -64,6 +69,15 @@ class Route {
     }
 
     /**
+     * Set isAJAX to true/false
+     * @since 1.4
+     */
+    function isAJAX($is = true){
+        $this->isAjax = $is;
+        return $this;
+    }
+
+    /**
      * Set callback function
      * @since 1.0
      */
@@ -86,6 +100,14 @@ class Route {
      */
     function getCatchAll(){
         return $this->catchall;
+    }
+
+    /**
+     * Check if route is AJAX Handler
+     * @since 1.4
+     */
+    function getAJAX(){
+        return $this->isAjax;
     }
 
     /**
