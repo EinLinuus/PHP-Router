@@ -178,6 +178,15 @@ var $ = __extend(function(data) {
     /**
      * Value
      */
+    value = function(data){
+        if(data === undefined){
+            return element.value;
+        }else {
+            each((el, index) => {
+                el.value = data;
+            });
+        }
+    }
 
     /**
      * ReplaceWith
@@ -204,35 +213,84 @@ var $ = __extend(function(data) {
     };
 
     /**
+     * Input
+     */
+    input = function(handler) {
+        each((el, index) => {
+            el.addEventListener('input', (event) => {
+                handler(event);
+            });
+        });
+    };
+
+    /**
      * Parent
      */
     parent = function() {
         return element.parentElement;
-    }
+    };
 
     /**
      * Hover
      */
+    hover = function(func1, func2){
+        on('mouseover', (event) => {
+            func1('enter');
+        });
+        on('mouseout', (event) => {
+            if(func2 === undefined){
+                finc1('leave');
+            }else {
+                func2('leave');
+            }
+        });
+    };
 
     /**
      * Hide
      */
+    hide = function() {
+        each((el, index) => {
+            el.style.display = 'none';
+        });
+    };
 
     /**
      * Show
      */
+    show = function() {
+        each((el, index) => {
+            el.style.display = 'block';
+        });
+    };
 
     /**
      * Toggle
      */
+    hide = function() {
+        each((el, index) => {
+            if(el.style.display === 'none') el.style.display = 'none';
+            else el.style.display = 'block';
+        });
+    };
 
     /**
      * Slide Up
      */
+    slideUp = function(time = 300) {
+        each((el, index) => {
+
+        });
+    };
 
     /**
      * Slide Down
      */
+    slideDown = function(time = 300) {
+        each((el, index) => {
+
+        });
+    };
 
     /**
      * SlideToggle
@@ -242,17 +300,50 @@ var $ = __extend(function(data) {
      * Load
      */
 
-     /**
-      * Fade out
-      */
+    /**
+     * Fade out
+     */
+    fadeOut = function(time = 300){
+        each((el, index) => {
+            el.style.opacity = 1;
+            var timer = setInterval(() => {
+                if(el.style.opacity == 0){
+                    clearInterval(timer);
+                }else {
+                    el.style.opacity = (parseFloat(el.style.opacity) - (1 / 100));
+                }
+            }, time / 100);
+        });
+    }
 
     /**
      * Fade In
      */
+    fadeIn = function(time = 300){
+        each((el, index) => {
+            el.style.opacity = 0;
+            var timer = setInterval(() => {
+                if(el.style.opacity == 1){
+                    clearInterval(timer);
+                }else {
+                    el.style.opacity = (parseFloat(el.style.opacity) + (1 / 100));
+                }
+            }, time / 100);
+        });
+    }
 
     /**
      * Fade toggle
      */
+    fadeToggle = function(time = 300) {
+        each((el, index) => {
+            if(el.style.opacity == 0){
+                fadeIn(time);
+            }else {
+                fadeOut(time);
+            }
+        });
+    }
 
     /**
      * Return this
