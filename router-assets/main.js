@@ -1,4 +1,6 @@
-$('#loadAjax').on('click', (event) => {
+$('#loadAjax').click((event) => {
+
+    $('#loadAjax').remove();
 
     var els = $('#ajax');
 

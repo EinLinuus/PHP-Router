@@ -26,7 +26,7 @@ var $ = __extend(function(data) {
         document.querySelectorAll(data)
     );
     element = (
-        elements instanceof Array
+        elements instanceof NodeList
         ?
         elements[0]
         :
@@ -69,6 +69,16 @@ var $ = __extend(function(data) {
     removeClass = function(name) {
         each((el, index) => {
             if(el.classList.contains(name)) el.classList.remove(name);
+        });
+    };
+
+    /**
+     * Toggle class
+     */
+    toggleClass = function(name) {
+        each((el, index) => {
+            if(el.classList.contains(name)) el.classList.remove(name);
+            else el.classList.add(name);
         });
     };
 
@@ -152,6 +162,97 @@ var $ = __extend(function(data) {
             });
         });
     };
+
+    /**
+     * Append
+     */
+
+    /**
+     * Prepend
+     */
+
+    /**
+     * CSS (also accept objects)
+     */
+
+    /**
+     * Value
+     */
+
+    /**
+     * ReplaceWith
+     */
+
+    /**
+     * Remove
+     */
+    remove = function() {
+        each((el, index) => {
+            el.remove();
+        });
+    };
+
+    /**
+     * Click
+     */
+    click = function(handler) {
+        each((el, index) => {
+            el.addEventListener('click', (event) => {
+                handler(event);
+            });
+        });
+    };
+
+    /**
+     * Parent
+     */
+    parent = function() {
+        return element.parentElement;
+    }
+
+    /**
+     * Hover
+     */
+
+    /**
+     * Hide
+     */
+
+    /**
+     * Show
+     */
+
+    /**
+     * Toggle
+     */
+
+    /**
+     * Slide Up
+     */
+
+    /**
+     * Slide Down
+     */
+
+    /**
+     * SlideToggle
+     */
+
+    /**
+     * Load
+     */
+
+     /**
+      * Fade out
+      */
+
+    /**
+     * Fade In
+     */
+
+    /**
+     * Fade toggle
+     */
 
     /**
      * Return this
