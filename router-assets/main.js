@@ -4,7 +4,7 @@ $('#loadAjax').click((event) => {
 
     var els = $('#ajax');
 
-    $.http('/router/php-router/ajax/', {
+    $.ajax('/router/php-router/ajax/', {
         method: 'POST',
         data: {
             ajax: true,

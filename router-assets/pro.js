@@ -259,7 +259,7 @@ var $ = __extend(function(data) {
      */
     return this;
 }, {
-    http: function(url, data){
+    ajax: function(url, data){
         
         var successFunc = null;
         var errorFunc = null;
